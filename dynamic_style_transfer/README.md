@@ -1,8 +1,6 @@
 # Dynamic Style Transfer
-Official pyTorch implementation of the style transfer experiments reported in the following paper:
-
-### Dynamic-Net: Tuning the Objective Without Re-training [[paper]](https://arxiv.org/abs/1811.08760) [[project page]](https://cgm.technion.ac.il/Computer-Graphics-Multimedia/Software/DynamicNet/)
-
+Official pyTorch implementation of the style transfer experiments reported in the following paper:<br>
+**Dynamic-Net: Tuning the Objective Without Re-training [[paper]](https://arxiv.org/abs/1811.08760) [[project page]](https://cgm.technion.ac.il/Computer-Graphics-Multimedia/Software/DynamicNet/)**<br>
 Alon Shoshan, [Roey Mechrez](http://cgm.technion.ac.il/people/Roey/), [Lihi Zelnik-Manor](http://lihi.eew.technion.ac.il/)<br>
 [Technion - Israel Institute of Technology](http://cgm.technion.ac.il/)
 
