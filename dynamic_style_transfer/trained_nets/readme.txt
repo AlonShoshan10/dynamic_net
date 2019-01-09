@@ -1,2 +1,2 @@
-download pre-trained networks from: https://drive.google.com/open?id=1ZoBm_Hjn_l3Bpyz7idxH9FzFWVOtHKqN
+download pre-trained networks from: https://drive.google.com/drive/folders/1zdxj94Y9754-dSxYKdSBe7BzzNmtenlr
 and save them here
