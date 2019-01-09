@@ -81,6 +81,7 @@ def calc_input_tensor(image, model, transformer):
         input_tensor = input_tensor[:, :, :, 1:-1]
     return input_tensor
 
+
 def str2bool(v):
     if v.lower() in ('yes', 'true', 't', 'y', '1'):
         return True

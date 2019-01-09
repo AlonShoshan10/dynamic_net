@@ -59,7 +59,7 @@ for alpha in tqdm(alphas):
     #output_image = to_pil_image(output_tensor[0, :, :, :].clamp(min=0.0, max=1).cpu().squeeze(dim=0))
     #output_image.save(os.path.join(save_path, '%s_%.03f.png' % (network_name, alpha)))
 output_image = to_pil_image(comb_image_tensor[:, :, :].clamp(min=0.0, max=1).cpu())
-output_image.save(os.path.join(save_path, '0%s_grid.png' % network_name))
+output_image.save(os.path.join(save_path, '%s_grid.png' % network_name))
 
 
 

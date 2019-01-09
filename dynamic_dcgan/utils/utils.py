@@ -5,7 +5,7 @@ from torch.utils.data import DataLoader
 import torch
 import ast
 from data_sets.celeb_a_data_set import CelebADataSet
-
+import argparse
 
 def load_image(filename, size=None, scale=None):
     img = Image.open(filename)
@@ -90,4 +90,13 @@ def save_net(net, path, net_name, device):
     print('saving net %s to %s' % (net_name, path))
     torch.save(net.cpu().state_dict(), os.path.join(path, net_name))
     net.to(device)
+
+
+def str2bool(v):
+    if v.lower() in ('yes', 'true', 't', 'y', '1'):
+        return True
+    elif v.lower() in ('no', 'false', 'f', 'n', '0'):
+        return False
+    else:
+        raise argparse.ArgumentTypeError('Boolean value expected.')
 
