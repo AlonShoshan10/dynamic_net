@@ -19,10 +19,9 @@ alphas = [0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.45, 0.6, 0.8, 1]
 parser = argparse.ArgumentParser()
 parser.add_argument('--network_name', default=network_name)
 parser.add_argument('--num_of_images', default=num_of_images, type=int)
-parser.add_argument('--use_saved_config', default=use_saved_config, type=lambda x:bool(utils.str2bool(x)))
+
 inference_opt = parser.parse_args()
 network_name = inference_opt.network_name
-use_saved_config = inference_opt.use_saved_config
 num_of_images = inference_opt.num_of_images
 
 networks_path = os.path.join('trained_nets', network_name)
@@ -33,11 +32,9 @@ if not os.path.exists(save_path):
     utils.make_dirs(save_path)
 
 opt = config.get_configurations(parser=parser)
-if use_saved_config:
-    if os.path.exists(config_path):
-        utils.read_config_and_arrange_opt(config_path, opt)
-    else:
-        raise ValueError('config_path does not exists')
+if os.path.exists(config_path):
+    utils.read_config_and_arrange_opt(config_path, opt)
+
 
 dynamic_model = InferenceModel(opt)
 dynamic_model.load_network(model_path)
