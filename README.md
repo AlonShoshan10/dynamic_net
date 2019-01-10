@@ -35,7 +35,7 @@ One of the key ingredients for successful optimization of modern CNNs is identif
 
 ### Image Completion
 <div align='center'>
-  <img src='images/image_completion.PNG' width="100%>
+  <img src='images/image_completion.PNG'><br>
   <b>Dynamic-Net allows the user to select the best working point for each image, improving results of networks that were trained with sub-optimal objectives</b><br>
 </div>
 
