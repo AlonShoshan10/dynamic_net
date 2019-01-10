@@ -36,47 +36,8 @@ One of the key ingredients for successful optimization of modern CNNs is identif
 ### Image Completion
 <div align='center'>
   <img src='images/image_completion.PNG' width="100%>
+  <b>Dynamic-Net allows the user to select the best working point for each image, improving results of networks that were trained with sub-optimal objectives</b><br>
 </div>
-<!--<table style="width:400">
-  <tr>
-    <th>Input</th>
-    <th>α=0</th> 
-    <th>α=0.4</th>
-    <th>α=1</th>
-    <th>&nbsp;&nbsp;</th>
-    <th>Input</th>
-    <th>α=0</th> 
-    <th>α=0.5</th>
-    <th>α=1</th>
-  </tr>
-  <tr>
-    <th><img width="100%" src="images/input_000041.png"></th>
-    <th><img width="100%" src="images/05_0042_0_0.png"></th>
-    <th><img width="100%" src="images/05_0042_0_8.png"></th>
-    <th><img width="100%" src="images/05_0042_1_20.png"></th>
-    <th>&nbsp;&nbsp;</th>
-    <th><img width="100%" src="images/input_000407.png"></th>
-    <th><img width="100%" src="images/05_0408_0_0.png"></th>
-    <th><img width="100%" src="images/05_0408_0_10.png"></th>
-    <th><img width="100%" src="images/05_0408_1_20.png"></th>
-  </tr>
-  <tr>
-    <th></th>
-    <th>Original result</th> 
-    <th>Improved result</th>
-    <th></th>
-    <th>&nbsp;&nbsp;&nbsp;</th>
-    <th></th>
-    <th>Original result</th> 
-    <th>Improved result</th> 
-    <th></th>
-  </tr>
-</table>
-<div align='center'>
-<b>Dynamic-Net allows the user to select the best working point for each image, improving results of networks that were trained with sub-optimal objectives</b><br>
-</div>-->
-
-
 
 ## Code
 Code for every application is written as a separate project:
