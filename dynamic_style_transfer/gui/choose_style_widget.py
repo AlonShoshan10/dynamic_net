@@ -18,7 +18,7 @@ from models.inference_model import InferenceModel
 class ChooseStyleWidget(BaseWidget):
     def __init__(self, parent=None, main_widget=None, widget_name='choose style'):
         super(ChooseStyleWidget, self).__init__(parent=parent, widget_name=widget_name, geometry=(60,30,200,200))
-        self.im_size = 160
+        self.im_size = 128
         self.main_widget = main_widget
         pix_map_images, self.images = self.load_images()
         # dynamic style transfer
@@ -48,7 +48,7 @@ class ChooseStyleWidget(BaseWidget):
 
         # dynamic dual style transfer layout
         dynamic_dual_style_transfer_layout_txt = QHBoxLayout()
-        dual_style_transfer_txt = QLabel('Dynamic Dual Style Transfer Networks')
+        dual_style_transfer_txt = QLabel('Dynamic Style to Style Transfer Networks')
         dynamic_dual_style_transfer_layout_txt.addWidget(dual_style_transfer_txt)
         dynamic_dual_style_transfer_layout_txt.setAlignment(QtCore.Qt.AlignHCenter)
         self.mosaic2feathers_image_label = QLabel(self)
@@ -63,6 +63,11 @@ class ChooseStyleWidget(BaseWidget):
         self.colors2girl_image_label = QLabel(self)
         self.colors2waterfall_image_label = QLabel(self)
 
+        self.horse2guitar_image_label = QLabel(self)
+        self.mosaic2mosaic3_image_label = QLabel(self)
+        self.mosaic32colors_image_label = QLabel(self)
+        self.guitar2mosaic3_image_label = QLabel(self)
+
         mosaic2feathers_layout, self.mosaic2feathers_button = self.make_image_and_button_layout(self.mosaic2feathers_image_label, 'Mosaic -> Feathers', self.on_mosaic2feathers_click, pix_map_image=self.transformer.combine_pil_images(self.images['mosaic'], self.images['feathers'], hight=self.im_size, width=int(self.im_size/2)))
         colors2mosaic_layout, self.colors2mosaic_button = self.make_image_and_button_layout(self.colors2mosaic_image_label, 'Color Mosaic -> Mosaic', self.on_colors2mosaic_click, pix_map_image=self.transformer.combine_pil_images(self.images['colors'], self.images['mosaic'], hight=self.im_size, width=int(self.im_size/2)))
         udnie2feathers_layout, self.udnie2feathers_button = self.make_image_and_button_layout(self.udnie2feathers_image_label, 'Udnie -> Feathers', self.on_udnie2feathers_click, pix_map_image=self.transformer.combine_pil_images(self.images['udnie'], self.images['feathers'], hight=self.im_size, width=int(self.im_size/2)))
@@ -74,6 +79,11 @@ class ChooseStyleWidget(BaseWidget):
         white_II2mosaic_layout, self.white_II2mosaic_button = self.make_image_and_button_layout(self.white_II2mosaic_image_label, 'On White II -> Mosaic', self.on_white_II2mosaic_click, pix_map_image=self.transformer.combine_pil_images(self.images['on_white_II'], self.images['mosaic'], hight=self.im_size, width=int(self.im_size/2)))
         colors2girl_layout, self.colors2girl_button = self.make_image_and_button_layout(self.colors2girl_image_label, 'Color Mosaic -> Abstract Woman', self.on_colors2girl_click, pix_map_image=self.transformer.combine_pil_images(self.images['colors'], self.images['girl'], hight=self.im_size, width=int(self.im_size/2)))
         colors2waterfall_layout, self.colors2waterfall_button = self.make_image_and_button_layout(self.colors2waterfall_image_label, 'Color Mosaic -> Waterfall', self.on_colors2waterfall_click, pix_map_image=self.transformer.combine_pil_images(self.images['colors'], self.images['waterfall'], hight=self.im_size, width=int(self.im_size/2)))
+
+        horse2guitar_layout, self.horse2guitar_button = self.make_image_and_button_layout(self.horse2guitar_image_label, 'Horse -> Guitar', self.on_horse2guitar_click, pix_map_image=self.transformer.combine_pil_images(self.images['horse'], self.images['guitar'], hight=self.im_size, width=int(self.im_size/2)))
+        mosaic2mosaic3_layout, self.mosaic2mosaic3_button = self.make_image_and_button_layout(self.mosaic2mosaic3_image_label, 'Mosaic -> Mosaic 3', self.on_mosaic2mosaic3_click, pix_map_image=self.transformer.combine_pil_images(self.images['mosaic'], self.images['mosaic3'], hight=self.im_size, width=int(self.im_size/2)))
+        mosaic32colors_layout, self.mosaic32colors_button = self.make_image_and_button_layout(self.mosaic32colors_image_label, ' Mosaic 3 -> Color Mosaic', self.on_mosaic32colors_click, pix_map_image=self.transformer.combine_pil_images(self.images['mosaic3'], self.images['colors'], hight=self.im_size, width=int(self.im_size/2)))
+        guitar2mosaic3_layout, self.guitar2mosaic3_button = self.make_image_and_button_layout(self.guitar2mosaic3_image_label, 'Guitar -> Mosaic 3', self.on_guitar2mosaic3_click, pix_map_image=self.transformer.combine_pil_images(self.images['guitar'], self.images['mosaic3'], hight=self.im_size, width=int(self.im_size/2)))
 
         dynamic_dual_transfer_network_layout_0 = QHBoxLayout()
         dynamic_dual_transfer_network_layout_0.addLayout(udnie2feathers_layout)
@@ -89,10 +99,17 @@ class ChooseStyleWidget(BaseWidget):
         dynamic_dual_transfer_network_layout_1.addLayout(colors2girl_layout)
         dynamic_dual_transfer_network_layout_1.addLayout(colors2waterfall_layout)
 
+        dynamic_dual_transfer_network_layout_2 = QHBoxLayout()
+        dynamic_dual_transfer_network_layout_2.addLayout(horse2guitar_layout)
+        dynamic_dual_transfer_network_layout_2.addLayout(mosaic2mosaic3_layout)
+        dynamic_dual_transfer_network_layout_2.addLayout(mosaic32colors_layout)
+        dynamic_dual_transfer_network_layout_2.addLayout(guitar2mosaic3_layout)
+
         middle_layout = QVBoxLayout()
         middle_layout.addLayout(dynamic_dual_style_transfer_layout_txt)
         middle_layout.addLayout(dynamic_dual_transfer_network_layout_0)
         middle_layout.addLayout(dynamic_dual_transfer_network_layout_1)
+        middle_layout.addLayout(dynamic_dual_transfer_network_layout_2)
 
         # dynamic scale style transfer layout
         dynamic_scale_style_transfer_layout_txt = QHBoxLayout()
@@ -123,7 +140,7 @@ class ChooseStyleWidget(BaseWidget):
         self.show()
 
     def load_images(self):
-        image_nams = ['mosaic', 'feathers', 'udnie', 'colors', 'waterfall', 'rain_princess', 'on_white_II', 'autumn_landscape', 'girl']
+        image_nams = ['mosaic', 'feathers', 'udnie', 'colors', 'waterfall', 'rain_princess', 'on_white_II', 'autumn_landscape', 'girl', 'horse', 'guitar', 'mosaic3']
         pix_map_images = {}
         images = {}
         for name in image_nams:
@@ -144,31 +161,31 @@ class ChooseStyleWidget(BaseWidget):
         return image_layout, button
 
     def on_mosaic_click(self):
-        self.main_widget.style_image = self.transformer.resize_to_max(self.images['mosaic'], 128)
+        self.main_widget.style_image = self.transformer.resize_to_max(self.images['mosaic'], 100)
         self.main_widget.set_style_image()
         print('Mosaic')
         self.choose_net('mosaic', dual=True)
 
     def on_feathers_click(self):
-        self.main_widget.style_image = self.transformer.resize_to_max(self.images['feathers'], 128)
+        self.main_widget.style_image = self.transformer.resize_to_max(self.images['feathers'], 100)
         self.main_widget.set_style_image()
         print('Feathers')
         self.choose_net('feathers', dual=True)
 
     def on_udnie_click(self):
-        self.main_widget.style_image = self.transformer.resize_to_max(self.images['udnie'], 128)
+        self.main_widget.style_image = self.transformer.resize_to_max(self.images['udnie'], 100)
         self.main_widget.set_style_image()
         print('Udnie')
         self.choose_net('udnie_1e5_5e6')
 
     def on_white_II_click(self):
-        self.main_widget.style_image = self.transformer.resize_to_max(self.images['on_white_II'], 128)
+        self.main_widget.style_image = self.transformer.resize_to_max(self.images['on_white_II'], 100)
         self.main_widget.set_style_image()
         print('On White II')
         self.choose_net('on_white_II', dual=True)
 
     def on_autumn_landscape_click(self):
-        self.main_widget.style_image = self.transformer.resize_to_max(self.images['autumn_landscape'], 128)
+        self.main_widget.style_image = self.transformer.resize_to_max(self.images['autumn_landscape'], 100)
         self.main_widget.set_style_image()
         print('Autumn Landscape')
         self.choose_net('autumn_landscape', dual=True)
@@ -234,24 +251,49 @@ class ChooseStyleWidget(BaseWidget):
         self.choose_net('colors_to_waterfall_1e6')
 
     def on_udnie_scale_click(self):
-        self.main_widget.style_image = self.transformer.resize_to_max(self.images['udnie'], 128)
+        self.main_widget.style_image = self.transformer.resize_to_max(self.images['udnie'], 100)
         self.main_widget.set_style_image()
         print('Udnie Scale')
         self.choose_net('udnie_5e5_None_256')
 
     def on_waterfall_scale_click(self):
-        self.main_widget.style_image = self.transformer.resize_to_max(self.images['waterfall'], 128)
+        self.main_widget.style_image = self.transformer.resize_to_max(self.images['waterfall'], 100)
         self.main_widget.set_style_image()
         print('Waterfall Scale')
         self.choose_net('waterfall_5e5_440_220')
 
+    ########## Update ##############
+    def on_horse2guitar_click(self):
+        self.main_widget.style_image = self.transformer.combine_pil_images(self.images['horse'],
+                                                                           self.images['guitar'], pixmap=False)
+        self.main_widget.set_style_image()
+        print('Horse -> Guitar')
+        self.choose_net('horse_guitar')
+
+    def on_mosaic2mosaic3_click(self):
+        self.main_widget.style_image = self.transformer.combine_pil_images(self.images['mosaic'],
+                                                                           self.images['mosaic3'], pixmap=False)
+        self.main_widget.set_style_image()
+        print('Mosaic -> Mosaic 3')
+        self.choose_net('mosaic_mosaic3')
+
+    def on_mosaic32colors_click(self):
+        self.main_widget.style_image = self.transformer.combine_pil_images(self.images['mosaic3'],
+                                                                           self.images['colors'], pixmap=False)
+        self.main_widget.set_style_image()
+        print('Mosaic 3 -> Colored Mosaic')
+        self.choose_net('mosaic3_colors')
+
+    def on_guitar2mosaic3_click(self):
+        self.main_widget.style_image = self.transformer.combine_pil_images(self.images['guitar'],
+                                                                           self.images['mosaic3'], pixmap=False)
+        self.main_widget.set_style_image()
+        print('Guitar -> Mosaic 3')
+        self.choose_net('guitar_mosaic3')
+    ################################################
+
     def choose_net(self, net_name, dual=False):
         self.load_net(net_name, set_net_version=('dual' if dual else 'normal'))
-        if self.main_widget.input_image is not None and self.main_widget.input_tensor is None:
-            self.main_widget.calc_input_tensor()
-        if self.main_widget.input_tensor is not None:
-            self.main_widget.run()
-            self.main_widget.set_output_image()
         if self.main_widget.dual_mode is not dual:
             self.main_widget.dual_mode = dual
             if dual:
@@ -259,6 +301,17 @@ class ChooseStyleWidget(BaseWidget):
             else:
                 self.main_widget.slider_range = (0, 100)
             self.main_widget.multi_alpha_check_box_state_changed()
+        if self.main_widget.input_image is not None and self.main_widget.input_tensor is None:
+            self.main_widget.calc_input_tensor()
+        if self.main_widget.input_tensor is not None:
+            if self.main_widget.multi_alpha:
+                self.main_widget.alpha_0_slider_changed()
+                self.main_widget.alpha_1_slider_changed()
+                self.main_widget.alpha_2_slider_changed()
+            else:
+                self.main_widget.alpha_slider_changed()
+            self.main_widget.run()
+            self.main_widget.set_output_image()
         self.close()
 
     def load_net(self, net_name, set_net_version=None):

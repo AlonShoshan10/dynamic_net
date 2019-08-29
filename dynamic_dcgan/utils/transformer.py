@@ -15,7 +15,7 @@ class Transformer():
         im = ImageQt.ImageQt(im)
         return QtGui.QPixmap.fromImage(im)
 
-    def combine_pil_images(self, im1, im2, hight=128, width=64, pixmap=True):
+    def combine_pil_images(self, im1, im2, hight=100, width=50, pixmap=True):
         factor_1 = im1.width / hight
         factor_2 = im2.width / hight
         im1 = im1.resize((int(im1.width / factor_1), hight), Image.ANTIALIAS)

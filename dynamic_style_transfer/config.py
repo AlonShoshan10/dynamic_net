@@ -8,9 +8,9 @@ def get_configurations(parser=None):
     experiment_name = 'on_white_II_waterfall'  # write here the name of the experiment
     experiments_dir_name = os.path.join('experiments', experiment_name)
     main_style_image_name = 'on_white_II'
-    tuning_blocks_style_image_name = 'on_white_II'
-    tuning_blocks_lower_style_image_name = 'udnie'
-    tuning_blocks_higher_style_image_name = 'colors'
+    tuning_blocks_style_image_name = 'waterfall'
+    tuning_blocks_lower_style_image_name = 'waterfall'
+    tuning_blocks_higher_style_image_name = 'waterfall'
     main_epochs = 2  # 2
     tuning_blocks_epochs = 2  # 2
     batch_size = 4
@@ -19,7 +19,7 @@ def get_configurations(parser=None):
     main_content_wight = 1
     main_style_wight = 1e5
 
-    network_version = 'normal'
+    network_version = 'normal'  # 'normal' \ 'dual'
 
     blocks_content_wight = 1  # set for network_version = 'normal'
     blocks_style_wight = 1e7  # set for network_version = 'normal'
@@ -45,17 +45,17 @@ def get_configurations(parser=None):
     intermediate_images_iter = 500
     current_batch_eval_iter = 100
 
-    train_data_path = '/home/alon-ran/Alon/data_sets/COCO2014'
-    val_data_path = '/home/alon-ran/Alon/data_sets/COCO2014_val'
+    train_data_path = 'C:\\Users\\shoshan\\Desktop\\COCO2014_train'
+    val_data_path = 'C:\\Users\\shoshan\\Desktop\\COCO2014_train'
 
     model_top_params = 'main_%d_blocks_%d' % (main_style_wight, blocks_style_wight)
     checkpoint_dir = os.path.join(experiments_dir_name, 'checkpoints')
     model_save_dir = os.path.join(experiments_dir_name, 'model_dir')
     images_save_dir = os.path.join(experiments_dir_name, 'images')
     main_style_image_path = os.path.join('images', 'style_images', main_style_image_name + '.jpg')
-    tuning_blocks_lower_style_image_path = os.path.join('images', 'style_images', tuning_blocks_style_image_name + '.jpg')
-    tuning_blocks_higher_style_image_path = os.path.join('images', 'style_images', tuning_blocks_lower_style_image_name + '.jpg')
-    tuning_blocks_style_image_path = os.path.join('images', 'style_images', tuning_blocks_higher_style_image_name + '.jpg')
+    tuning_blocks_lower_style_image_path = os.path.join('images', 'style_images', tuning_blocks_lower_style_image_name + '.jpg')
+    tuning_blocks_higher_style_image_path = os.path.join('images', 'style_images', tuning_blocks_higher_style_image_name + '.jpg')
+    tuning_blocks_style_image_path = os.path.join('images', 'style_images', tuning_blocks_style_image_name + '.jpg')
     evaluation_images_path = os.path.join('images', 'evaluation_images')
     pre_trained_main_model = os.path.join(model_save_dir, 'orginal_main_latest.pth')
     pre_trained_tuning_blocks_lower = os.path.join(model_save_dir, 'tuning_blocks_lower.pth')
@@ -106,7 +106,6 @@ def get_configurations(parser=None):
         parser.add_argument('--tuning_blocks_higher_style_image_name', default=tuning_blocks_higher_style_image_name)
         parser.add_argument('--tuning_blocks_lower_style_image_path', default=tuning_blocks_lower_style_image_path)
         parser.add_argument('--tuning_blocks_higher_style_image_path', default=tuning_blocks_higher_style_image_path)
-
         parser.add_argument('--pre_trained_tuning_blocks_lower', default=pre_trained_tuning_blocks_lower)
         parser.add_argument('--pre_trained_tuning_blocks_higher', default=pre_trained_tuning_blocks_higher)
     elif network_version is 'normal':

@@ -63,27 +63,30 @@ class TrainingModel(InferenceModel):
 
     def load_pre_trained_main(self):
         if os.path.exists(self.opt.pre_trained_main_model):
-            self.net.main.lroad_state_dict(torch.load(self.opt.pre_trained_main_model))
+            self.net.main.load_state_dict(torch.load(self.opt.pre_trained_main_model))
             print('%s pre trained main network loaded' % self.opt.pre_trained_main_model)
             self.net.to(self.device)
         else:
             print('!!! no pre_trained_main_model !!!')
+            raise Exception('no pre_trained_main_model at %s' % self.opt.pre_trained_main_model)
 
     def load_pre_trained_tuning_blocks_lower(self):
         if os.path.exists(self.opt.pre_trained_tuning_blocks_lower):
-            self.net.tuning_blocks_lower.lroad_state_dict(torch.load(self.opt.pre_trained_tuning_blocks_lower))
+            self.net.tuning_blocks_lower.load_state_dict(torch.load(self.opt.pre_trained_tuning_blocks_lower))
             print('%s pre trained tuning blocks lower loaded' % self.opt.pre_trained_tuning_blocks_lower)
             self.net.to(self.device)
         else:
             print('!!! no pre_trained_tuning_blocks_lower !!!')
+            raise Exception('no pre_trained_tuning_blocks_lower at %s' % self.opt.pre_trained_tuning_blocks_lower)
 
     def load_pre_trained_tuning_blocks_higher(self):
         if os.path.exists(self.opt.pre_trained_tuning_blocks_higher):
-            self.net.tuning_blocks_higher.lroad_state_dict(torch.load(self.opt.pre_trained_tuning_blocks_higher))
+            self.net.tuning_blocks_higher.load_state_dict(torch.load(self.opt.pre_trained_tuning_blocks_higher))
             print('%s pre trained tuning blocks higher loaded' % self.opt.pre_trained_tuning_blocks_higher)
             self.net.to(self.device)
         else:
             print('!!! no pre_trained_tuning_blocks_higher !!!')
+            raise Exception('no pre_trained_tuning_blocks_higher at %s' % self.opt.pre_trained_tuning_blocks_higher)
 
     def compute_gram_style(self, size):
         style = utils.load_image(self.style_image_path, size=size)
