@@ -45,8 +45,8 @@ def get_configurations(parser=None):
     intermediate_images_iter = 500
     current_batch_eval_iter = 100
 
-    train_data_path = 'C:\\Users\\shoshan\\Desktop\\COCO2014_train'
-    val_data_path = 'C:\\Users\\shoshan\\Desktop\\COCO2014_train'
+    train_data_path = 'Path to COCO2014_train'
+    val_data_path = 'Path to COCO2014_val'
 
     model_top_params = 'main_%d_blocks_%d' % (main_style_wight, blocks_style_wight)
     checkpoint_dir = os.path.join(experiments_dir_name, 'checkpoints')
