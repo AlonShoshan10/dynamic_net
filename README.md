@@ -58,11 +58,12 @@ Code for every application is written as a separate project:
 ## Citation
 If you use our code for research, please cite our paper:
 ```
-@article{shoshan2018dynamic,
-  title={Dynamic-Net: Tuning the Objective Without Re-training},
-  author={Shoshan, Alon and Mechrez, Roey and Zelnik-Manor, Lihi},
-  journal={arXiv preprint arXiv:1811.08760},
-  year={2018}
+@InProceedings{Shoshan_2019_ICCV,
+  title = {Dynamic-Net: Tuning the Objective Without Re-Training for Synthesis Tasks},
+  author = {Shoshan, Alon and Mechrez, Roey and Zelnik-Manor, Lihi},
+  booktitle = {The IEEE International Conference on Computer Vision (ICCV)},
+  month = {October},
+  year = {2019}
 }
 ```
 
