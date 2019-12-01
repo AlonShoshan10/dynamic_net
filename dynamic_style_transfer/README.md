@@ -49,7 +49,7 @@ cv2
 **Demo:**<br>
 1. Download The pre-trained networks of the demo [here](https://drive.google.com/drive/folders/1zdxj94Y9754-dSxYKdSBe7BzzNmtenlr?usp=sharing) and save them in `trained_nets` folder.
 2. Run `python demo.py`.
-3. You can drag and drop an image to the GUI or click "Take Photo" to use your webcam.
+3. You can drag and drop an image to the GUI or click "Take Photo" to use your webcam (use "space bar" or "enter key" to capture your image).
 4. Click "Save Image" to save, your results will be saved in `results/gui_results`.
 5. Enjoy :).
 
